@@ -48,7 +48,10 @@ SourceArt/**/*.tga
 # Binary Files
 Binaries/*
 Plugins/*/Binaries/*
-
+MyGameProject/Binaries/*
+MyGameProject/Intermediate/*
+MyGameProject/Saved/*
+MyGameProject.sln
 # Builds
 Build/*
 
