@@ -1,0 +1,15 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-PF_Project.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Unreal Project\AR_UE_Portfolio\PF_Project\Intermediate\Build\Win64\PF_ProjectEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
+"C:\Unreal Project\AR_UE_Portfolio\PF_Project\Intermediate\Build\Win64\UnrealEditor\Development\PF_Project\PF_Project.cpp.obj"
+"C:\Unreal Project\AR_UE_Portfolio\PF_Project\Intermediate\Build\Win64\UnrealEditor\Development\PF_Project\PF_ProjectGameModeBase.cpp.obj"
+"C:\Unreal Project\AR_UE_Portfolio\PF_Project\Intermediate\Build\Win64\UnrealEditor\Development\PF_Project\PF_Project.init.gen.cpp.obj"
+"C:\Unreal Project\AR_UE_Portfolio\PF_Project\Intermediate\Build\Win64\UnrealEditor\Development\PF_Project\PF_ProjectGameModeBase.gen.cpp.obj"
+"C:\Unreal Project\AR_UE_Portfolio\PF_Project\Intermediate\Build\Win64\UnrealEditor\Development\PF_Project\Default.rc2.res"
+/OUT:"C:\Unreal Project\AR_UE_Portfolio\PF_Project\Intermediate\Build\Win64\UnrealEditor\Development\PF_Project\UnrealEditor-PF_Project.lib"

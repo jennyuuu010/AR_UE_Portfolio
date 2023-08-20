@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"C:\\Unreal Project\\AR_UE_Portfolio\\PF_Project\\Source\\PF_Project\\PF_Project.Build.cs",
+		"C:\\Unreal Project\\AR_UE_Portfolio\\PF_Project\\Source\\PF_Project.Target.cs",
+		"C:\\Unreal Project\\AR_UE_Portfolio\\PF_Project\\Source\\PF_ProjectEditor.Target.cs"
+	],
+	"EngineVersion": "5.0.3"
+}

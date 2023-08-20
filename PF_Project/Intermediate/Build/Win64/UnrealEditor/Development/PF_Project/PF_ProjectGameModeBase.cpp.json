@@ -1,0 +1,19 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "c:\\unreal project\\ar_ue_portfolio\\pf_project\\source\\pf_project\\pf_projectgamemodebase.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\unreal project\\ar_ue_portfolio\\pf_project\\intermediate\\build\\win64\\pf_projecteditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "c:\\unreal project\\ar_ue_portfolio\\pf_project\\intermediate\\build\\win64\\unrealeditor\\development\\pf_project\\definitions.pf_project.h",
+            "c:\\unreal project\\ar_ue_portfolio\\pf_project\\source\\pf_project\\pf_projectgamemodebase.h",
+            "c:\\program files\\epic games\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "c:\\program files\\epic games\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "c:\\program files\\epic games\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\serverstatreplicator.generated.h",
+            "c:\\program files\\epic games\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\gamemodebase.generated.h",
+            "c:\\unreal project\\ar_ue_portfolio\\pf_project\\intermediate\\build\\win64\\unrealeditor\\inc\\pf_project\\pf_projectgamemodebase.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
