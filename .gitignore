@@ -1,4 +1,4 @@
-# Visual Studio 2015 user specific files
+# Visual Studio 2019 user specific files
 .vs/
 
 # Compiled Object files
@@ -48,10 +48,10 @@ SourceArt/**/*.tga
 # Binary Files
 Binaries/*
 Plugins/*/Binaries/*
-MyGameProject/Binaries/*
-MyGameProject/Intermediate/*
-MyGameProject/Saved/*
-MyGameProject.sln
+PF_Project/Binaries/*
+PF_Project/Intermediate/*
+PF_Project/Saved/*
+PF_Project.sln
 # Builds
 Build/*
 
