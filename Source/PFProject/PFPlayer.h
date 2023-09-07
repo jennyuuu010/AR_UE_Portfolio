@@ -4,7 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Camera/CameraComponent.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "PFPlayer.generated.h"
+
+class UCameraComponent;
+class USpringArmComponent;
+
 
 UCLASS()
 class PFPROJECT_API APFPlayer : public ACharacter
@@ -28,7 +34,11 @@ protected:
 	void MoveRight(float Value);
 	void MoveLeft(float Value);
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UCameraComponent* ViewCamera;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	USpringArmComponent* AttachSpring;
 
 private:	
 	
