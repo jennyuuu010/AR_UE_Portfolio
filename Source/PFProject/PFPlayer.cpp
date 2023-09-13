@@ -18,6 +18,9 @@ APFPlayer::APFPlayer()
 
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
 
+	BaseTurnRate = 45.f;
+	BaseLookUpRate = 45.f;
+
 }
 
 // Called when the game starts or when spawned
@@ -25,6 +28,8 @@ void APFPlayer::BeginPlay()
 {
 	Super::BeginPlay();
 	
+
+
 }
 
 
@@ -55,32 +60,40 @@ void APFPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 		UPlayerInput::AddEngineDefinedAxisMapping(FInputAxisKeyMapping(("MoveRight"), EKeys::A, -1.f));
 	
 		UPlayerInput::AddEngineDefinedAxisMapping(FInputAxisKeyMapping("PlayerTurn", EKeys::MouseX, 1.f));
+		UPlayerInput::AddEngineDefinedAxisMapping(FInputAxisKeyMapping("PlayerTurn", EKeys::MouseX, -1.f));
+		UPlayerInput::AddEngineDefinedAxisMapping(FInputAxisKeyMapping("PlayerLookUp", EKeys::MouseY, -1.f));
+		UPlayerInput::AddEngineDefinedAxisMapping(FInputAxisKeyMapping("PlayerLookUp", EKeys::MouseY, 1.f));
+		
+		//점프
+		UPlayerInput::AddEngineDefinedActionMapping(FInputActionKeyMapping("JumpAction", EKeys::SpaceBar, 1.f));
 
-	
+			
 	}
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &APFPlayer::MoveForward);	
 	PlayerInputComponent->BindAxis("MoveRight", this, &APFPlayer::MoveRight);
-	
-
-
+	PlayerInputComponent->BindAxis("PlayerLookUp", this, &APFPlayer::AddControllerPitchInput);
+	PlayerInputComponent->BindAxis("LookAroundRate", this, &APFPlayer::LookAroundRate);
 	PlayerInputComponent->BindAxis("PlayerTurn", this, &APFPlayer::AddControllerYawInput);
-
+	PlayerInputComponent->BindAxis("TurnRate", this, &APFPlayer::TurnRate);
+	PlayerInputComponent->BindAction("JumpAction", IE_Pressed, this, &APFPlayer::JumpAction);
 
 }
 
 void APFPlayer::MoveForward(float Value)
 {
 
-
+	//캐릭터 클래스에서는 기본적으로 Controller가 붙어 있다. 
 	if (Controller && (Value != 0.f))
 	{
-
+		FRotator const ControlSpaceRot = Controller->GetControlRotation();
 		FVector Forward = GetActorForwardVector();
-		AddMovementInput(Forward, Value, true);
+		AddMovementInput(FRotationMatrix(ControlSpaceRot).GetScaledAxis(EAxis::X), Value);
+		
+
+	
+		
 	}
-
-
 
 }
 
@@ -91,9 +104,58 @@ void APFPlayer::MoveRight(float Value)
 	if (Controller && (Value != 0.f))
 	{
 		FRotator const ControlSpaceRot = Controller->GetControlRotation();
-
+		FVector Right = GetActorRightVector();
 		AddMovementInput(FRotationMatrix(ControlSpaceRot).GetScaledAxis(EAxis::Y), Value);
+		
+
 	}
+
+
+}
+
+void APFPlayer::TurnRate(float Rate)
+{
+
+	AddControllerYawInput(Rate * GetWorld()->GetDeltaSeconds()* CustomTimeDilation);
+
+}
+
+void APFPlayer::LookAroundRate(float Rate)
+{
+
+	AddControllerPitchInput(Rate * GetWorld()->GetDeltaSeconds() * CustomTimeDilation);
+}
+
+void APFPlayer::JumpAction()
+{
+
+	Jump();
+}
+
+void APFPlayer::Attack()
+{
+
+	GetMesh()->GetAnimInstance();
+
+}
+
+void APFPlayer::JumpAxis(float Rate)
+{
+	if (0.f == Rate)
+	{
+		if (true == AxisJump)
+		{
+			StopJumping();
+			AxisJump = false; 
+
+
+		}
+		return; 
+
+	}
+
+	AxisJump = true; 
+	Jump();
 
 
 }

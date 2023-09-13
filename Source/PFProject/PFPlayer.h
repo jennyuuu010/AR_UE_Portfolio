@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Animation/AnimInstance.h"
 #include "PFPlayer.generated.h"
 
 class UCameraComponent;
@@ -29,10 +30,14 @@ protected:
 	virtual void BeginPlay() override;
 
 	//캐릭터 앞뒤좌우이동 
-	void MoveForward(float Value);
-	void MoveBackward(float Value);
+	void MoveForward(float Value);	
 	void MoveRight(float Value);
-	void MoveLeft(float Value);
+	void TurnRate(float Rate);
+	void LookAroundRate(float Rate);
+	void JumpAction();
+	void Attack();
+	void JumpAxis(float Rate);
+	
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UCameraComponent* ViewCamera;
@@ -40,7 +45,16 @@ protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	USpringArmComponent* AttachSpring;
 
-private:	
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	float BaseTurnRate;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	float BaseLookUpRate;
+
+	bool AxisJump = false; 
+	
+
+	
 	
 
 };
