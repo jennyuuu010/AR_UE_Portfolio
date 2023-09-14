@@ -2,6 +2,8 @@
 
 
 #include "PFPlayer.h"
+#include "PlayerAnimInstance.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 // Sets default values
 APFPlayer::APFPlayer()
@@ -67,6 +69,9 @@ void APFPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 		//점프
 		UPlayerInput::AddEngineDefinedActionMapping(FInputActionKeyMapping("JumpAction", EKeys::SpaceBar, 1.f));
 
+		//공격
+		UPlayerInput::AddEngineDefinedActionMapping(FInputActionKeyMapping("AttackAction", EKeys::LeftMouseButton, 1.f));
+
 			
 	}
 
@@ -76,7 +81,9 @@ void APFPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAxis("LookAroundRate", this, &APFPlayer::LookAroundRate);
 	PlayerInputComponent->BindAxis("PlayerTurn", this, &APFPlayer::AddControllerYawInput);
 	PlayerInputComponent->BindAxis("TurnRate", this, &APFPlayer::TurnRate);
+
 	PlayerInputComponent->BindAction("JumpAction", IE_Pressed, this, &APFPlayer::JumpAction);
+	PlayerInputComponent->BindAction("AttackAction", IE_Pressed, this, &APFPlayer::Attack);
 
 }
 
@@ -116,14 +123,14 @@ void APFPlayer::MoveRight(float Value)
 void APFPlayer::TurnRate(float Rate)
 {
 
-	AddControllerYawInput(Rate * GetWorld()->GetDeltaSeconds()* CustomTimeDilation);
+	AddControllerYawInput(Rate);
 
 }
 
 void APFPlayer::LookAroundRate(float Rate)
 {
 
-	AddControllerPitchInput(Rate * GetWorld()->GetDeltaSeconds() * CustomTimeDilation);
+	AddControllerPitchInput(Rate);
 }
 
 void APFPlayer::JumpAction()
@@ -135,7 +142,7 @@ void APFPlayer::JumpAction()
 void APFPlayer::Attack()
 {
 
-	GetMesh()->GetAnimInstance();
+	
 
 }
 
