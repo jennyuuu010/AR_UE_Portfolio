@@ -22,14 +22,21 @@ public:
 	UCharacterMovementComponent* movement;
 
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = PlayerAnim)
-	float speed = 0; 
-	float direction = 0;
+	float Speed = 0; 
+
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = PlayerAnim)
+	float Direction = 0;
+
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = PlayerAnim)
 	bool isInAir = false; 
 
 	UPROPERTY(EditAnywhere, Category = PlayerSetting)
 	float walkSpeed = 200;
+
+	UPROPERTY(EditAnywhere, Category = PlayerSetting)
 	float runSpeed = 600;
 
-	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
+	void NativeUpdateAnimation(float DeltaSeconds) override;
+	void NativeBeginPlay() override;
 
 };

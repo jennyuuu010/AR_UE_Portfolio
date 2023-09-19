@@ -4,31 +4,43 @@
 #include "PlayerAnimInstance.h"
 #include "PFPlayer.h"
 
+
+void UPlayerAnimInstance::NativeBeginPlay()
+{
+
+	Super::NativeBeginPlay();
+
+	APFPlayer* Player = Cast<APFPlayer>(GetOwningActor());
+
+	if (nullptr == Player && false == Player->IsValidLowLevel())
+	{
+
+		return;
+	}
+}
+
+
 void UPlayerAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 {
 	Super::NativeUpdateAnimation(DeltaSeconds);
 
-	auto ownerPawn = TryGetPawnOwner();
+		
+	APFPlayer* Player = Cast<APFPlayer>(GetOwningActor());
 
-	auto player = Cast<APFPlayer>(ownerPawn);
+	
 
-	if (player)
+	
+	Speed = Player->GetVelocity().Size(); 
+	Direction = CalculateDirection(Player->GetVelocity(), Player->GetActorRotation());
 
+	if (nullptr == Player)
 	{
-		FVector velocity = player->GetVelocity();
 
-		FVector forwardVector = player->GetActorForwardVector();
 
-		speed = FVector::DotProduct(forwardVector, velocity);
-
-		FVector rightVector = player->GetActorRightVector();
-		direction = FVector::DotProduct(rightVector, velocity);
-
-		//auto movement = player->GetCharacterMovement();
-
-		//isInAir = movement->IsFalling();
-
+		return;
 	}
-
+	
 
 }
+
+

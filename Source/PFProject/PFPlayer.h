@@ -6,7 +6,6 @@
 #include "GameFramework/Character.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
-#include "Animation/AnimInstance.h"
 #include "PFPlayer.generated.h"
 
 class UCameraComponent;
@@ -34,10 +33,14 @@ protected:
 	void MoveRight(float Value);
 	void TurnRate(float Rate);
 	void LookAroundRate(float Rate);
+
+	//점프
+
 	void JumpAction();
-	void Attack();
 	void JumpAxis(float Rate);
 	
+	//공격 
+	void Attack();
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UCameraComponent* ViewCamera;
